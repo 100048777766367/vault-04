@@ -1,0 +1,55 @@
+name: Vault-04 Pan-Lineage Autonomic Lifecycle
+
+on:
+  push:
+    branches: [ main, master ]
+  workflow_dispatch:
+  schedule:
+    - cron: '25 */4 * * *'
+
+permissions:
+  contents: write
+
+jobs:
+  run-vault04:
+    runs-on: ubuntu-latest
+    steps:
+      # 1. KÉO CODE BẰNG LINUX SHELL GỐC
+      - name: Kéo mã nguồn Vault-04
+        run: |
+          git clone --depth 1 https://github.com/${{ github.repository }}.git .
+
+      # 2. HẠ TẦNG CI/CD MỚI NHẤT: SETUP-PYTHON V7 & PYTHON 3.14
+      - name: Thiết lập môi trường Python 3.14
+        uses: actions/setup-python@v7
+        with:
+          python-version: '3.14'
+
+      # 3. VẬN HÀNH ĐỐC CÔNG F4 TỰ DÒ TÌM PHẢ HỆ
+      - name: Vận hành Đại Hợp Thể Vault-04
+        env:
+          REPO_OWNER: ${{ github.repository_owner }}
+        run: python kernel.py
+
+      # 4. LƯU VẾT THÀNH PHẨM VÀ BÁO CÁO GITHUB
+      - name: Lưu vết toàn bộ thành phẩm F4 lên Git
+        run: |
+          git config --global user.name "Vault-04-Autonomic-Bot"
+          git config --global user.email "bot@vault04.node"
+          
+          git remote set-url origin https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}.git
+          
+          TARGET_BRANCH=$(git rev-parse --abbrev-ref HEAD)
+          [ "$TARGET_BRANCH" = "HEAD" ] || [ -z "$TARGET_BRANCH" ] && TARGET_BRANCH="main"
+
+          git fetch origin "$TARGET_BRANCH"
+          git reset origin/"$TARGET_BRANCH"
+          
+          git add -A
+          
+          if ! git diff --staged --quiet; then
+            git commit -m "🧬 [Vault-04 F4] Tự quét toàn phả hệ & Tái tổ hợp Siêu XOR N^N #(1+N) [skip ci]"
+            git push origin "$TARGET_BRANCH"
+          else
+            echo "Kho hàng tĩnh lặng, không có biến thiên mới."
+          fi
