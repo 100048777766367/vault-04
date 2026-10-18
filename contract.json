@@ -1,0 +1,12 @@
+{
+    "contract_id": "bodhi.contract.v1",
+    "genesis_root": "100048777766367/contract",
+    "derived_node": "100048777766367/vault-04",
+    "role": "VAULT_LINEAGE_F4_AUTONOMIC_APEX",
+    "rules": {
+        "zero_pii": true,
+        "pan_ancestral_autonomic_sweep": true,
+        "dynamic_super_xor_n_power_n": true,
+        "heterosis_confidence_min": 0.9
+    }
+}
