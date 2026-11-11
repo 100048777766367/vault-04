@@ -1,6 +1,6 @@
 {
-    "epoch": 82,
-    "merkle_cid": "37782dcec7202bf754341e47ab1f2db11f338291a4bc6fdb8acfde043cb8dbb7f66785e7c2ec63de366fa7fa1904c27b04d3d68a6574fab6d2e2679da4d21b9b",
+    "epoch": 83,
+    "merkle_cid": "cc33d37b57bb0ddb5358f005ad01f8cf91592ca29fe82acbb6a8a9fa47b6b1960431a01cc1970d2dfdfff6cbc4ef7fe02230e6ba488fb4b88e4010bc6cde1247",
     "discovered_ancestors": [
         "100048777766367/vault",
         "100048777766367/vault-01",
@@ -9,5 +9,5 @@
     ],
     "tensor_dimension": "4^4",
     "purity_level": "99.99999%",
-    "timestamp": 1794379696
+    "timestamp": 1794414097
 }
