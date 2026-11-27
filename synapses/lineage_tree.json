@@ -1,10 +1,9 @@
 {
     "discovered_ancestors": [
         "100048777766367/vault",
-        "100048777766367/vault-01",
         "100048777766367/vault-02",
         "100048777766367/vault-03"
     ],
-    "harvested_count": 21,
+    "harvested_count": 18,
     "apex_count": 5
 }
